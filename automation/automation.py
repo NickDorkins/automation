@@ -18,6 +18,10 @@ def normalize_phone_numbers(phone_number):
     if len(digits) == 8:
         digits = "206-" + digits
 
+
+##############################################################
+##############################################################
+
 #  Find all phone numbers in the given document
 
 def contact_finder():
@@ -47,9 +51,21 @@ def contact_finder():
     
     number_list = []
 
+    # Use .extend() method to add phone numbers to the end of empty list
 
+    # Find web reference used for .extend()
+    number_list.extend(re.findall(phone_number, text))
+
+    print(number_list)
+
+
+
+def contact_validation():
 #  Validate the phone numbers against existing documents
-    with open('../assets/existing-contacts.txt'):
+    with open('../assets/existing-contacts.txt') as file:
+        text = file.read
+
+
 # Store phone numbers in a new file
 
 
@@ -62,6 +78,6 @@ def contact_finder():
 # Store Emails in a new file
 
 
-if __name__ == "__main__":
+# if __name__ == "__main__":
 
-    print(contact_finder())
+#     print(contact_finder())
