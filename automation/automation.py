@@ -4,12 +4,6 @@ import shutil
 #  Clean up the Phone numbers so they all match the same format
 # Format: ###-###-####
 # Any number w/o area code must be given "206" area code
-# Quick Reference:
-
-# \d{int} = \d looks for numbers, {int} tells it to look for a specific number of numbers that are concatinated inline(i.e if \d{4} it will find 1234 but not 1 2 3 4(Notice the spacing.)) 
-
-#  Don't forget the values in the middle of phone numbers, both hyphens and periods (- and .)
-
 
 def normalize_phone_numbers(phone_number):
     # Remove Open Parenthesis
@@ -26,11 +20,36 @@ def normalize_phone_numbers(phone_number):
 
 #  Find all phone numbers in the given document
 
-def phone_finder():
+def contact_finder():
+
+#  Open the "potential contacts" file, use 'with' so it will open and close the document
+    with open('assets/potential-contacts.txt') as file:
+        # Read the open file and assign it to a variable
+        text = file.read
+    print('TEXT', text)
+##############################################################
+# File path will not stop throwing errors even though I have #
+# checked the file path to ensure it's correct, using finder #
+# bar to confirm regex effectiveness                         #
+############################################################## 
+    
+    # Quick Reference:
+    
+    # \d{int} = \d looks for numbers, {int} tells it to look for a specific number of numbers that are concatinated inline(i.e if \d{4} it will find 1234 but not 1 2 3 4(Notice the spacing.)) 
+
+    #  Don't forget the values in the middle of phone numbers, both hyphens and periods (- and .)
+
+    # (?) - Question mark makes the parensthesis prior to it optional
+
+    phone_number = re.compile(r'\d{3}[-.]\d{3}[-.]\d{4}(x\d*)?')
+
+    print(phone_number)
+    
+    number_list = []
 
 
 #  Validate the phone numbers against existing documents
-
+    with open('../assets/existing-contacts.txt'):
 # Store phone numbers in a new file
 
 
@@ -43,3 +62,6 @@ def phone_finder():
 # Store Emails in a new file
 
 
+if __name__ == "__main__":
+
+    print(contact_finder())
